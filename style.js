@@ -9,8 +9,8 @@ font-family:Arial;
 width:64px;
 height:64px;
 position:absolute;
-background:#ff7aa2;
-border-radius:12px;
+background:url("assets/idle.png");
+background-size:cover;
 cursor:grab;
 }
 
