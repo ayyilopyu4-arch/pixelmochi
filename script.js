@@ -66,3 +66,24 @@ menu.classList.toggle("hidden");
 menu.style.left = cat.offsetLeft + "px";
 menu.style.top = cat.offsetTop + 70 + "px";
 };
+
+let dir = 1;
+
+function moveCat(){
+let x = cat.offsetLeft;
+
+if(x > window.innerWidth - 80) dir = -1;
+if(x < 0) dir = 1;
+
+cat.style.left = (x + dir * 2) + "px";
+}
+
+setInterval(()=>{
+moveCat();
+
+if(catState === "walk"){
+cat.style.background = (frame++ % 2 === 0)
+? "url('assets/walk1.png')"
+: "url('assets/walk2.png')";
+}
+}, 100);
