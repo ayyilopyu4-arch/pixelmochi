@@ -5,34 +5,53 @@ let catState = "idle";
 let frameX = 0;
 let frameY = 0;
 let frameCount = 0;
+let frame = 0; // Tambah variabel untuk ganti gambar jalan
 
 let drag = false;
 let offsetX = 0;
 let offsetY = 0;
 
-// Ubah kondisi animasi
 function setCatState(state) {
   catState = state;
-  frameX = 0; // Kembali ke frame awal
+  frameX = 0;
+  frame = 0; // Reset frame saat ganti kondisi
   menu.classList.add("hidden");
 }
 
-// Animasi utama
+// Fungsi gerak posisi kucing
+function moveCat() {
+  if (catState === "walk") {
+    // Contoh gerak ke kanan, bisa sesuaikan arahnya
+    cat.style.left = (cat.offsetLeft + 2) + "px";
+  }
+}
+
 function animate() {
   frameCount++;
+  frame++;
 
-  // Ganti gambar setiap 10 kali putaran
+  // Jalankan gerakan
+  moveCat();
+
+  // Logika untuk kondisi jalan (pakai 2 gambar terpisah)
+  if (catState === "walk") {
+    cat.style.backgroundImage = (frame % 2 === 0)
+      ? "url('assets/walk1.png')"
+      : "url('assets/walk2.png')";
+    cat.style.backgroundPosition = "center";
+    return; // Keluar agar tidak bentrok dengan sprite lain
+  }
+
+  // Logika untuk kondisi diam & tidur (pakai sprite sheet)
   if (frameCount % 10 === 0) {
     frameX++;
     if (frameX > 2) frameX = 0;
   }
 
-  // Pilih baris sesuai kondisi
   if (catState === "idle") frameY = 0;
   if (catState === "sleep") frameY = 1;
-  if (catState === "walk") frameY = 2;
 
-  // Terapkan posisi sprite
+  cat.style.backgroundImage = "url('assets/sprite.png')"; // Ganti sesuai nama filemu
   cat.style.backgroundPosition = `-${frameX * 64}px -${frameY * 64}px`;
 }
 
