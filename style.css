@@ -2,7 +2,6 @@ body{
 margin:0;
 overflow:hidden;
 background:#f5f5f5;
-font-family:Arial;
 }
 
 #cat{
@@ -11,13 +10,11 @@ height:64px;
 position:absolute;
 left:100px;
 top:100px;
-
-background:url("/mnt/data/a_sprite_sheet_sheet_of_an_adorable_pixel_art_cat.png");
-background-size:384px 256px; /* ukuran sheet */
-background-repeat:no-repeat;
-
+background:url("assets/idle.png");
+background-size:cover;
 cursor:grab;
 }
+
 #menu{
 position:absolute;
 background:white;
