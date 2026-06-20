@@ -8,12 +8,16 @@ font-family:Arial;
 #cat{
 width:64px;
 height:64px;
-background:pink;
 position:absolute;
-border-radius:12px;
+left:100px;
+top:100px;
+
+background:url("/mnt/data/a_sprite_sheet_sheet_of_an_adorable_pixel_art_cat.png");
+background-size:384px 256px; /* ukuran sheet */
+background-repeat:no-repeat;
+
 cursor:grab;
 }
-
 #menu{
 position:absolute;
 background:white;
