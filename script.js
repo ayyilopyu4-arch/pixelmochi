@@ -1,4 +1,28 @@
 let cat = document.getElementById("cat");
+
+let frameX = 0;
+let frameY = 0; // baris animasi
+let frameCount = 0;
+
+function animate(){
+frameCount++;
+
+// ganti frame tiap beberapa tick
+if(frameCount % 10 === 0){
+frameX++;
+
+if(frameX > 2){
+frameX = 0;
+}
+}
+
+// ambil bagian sprite sheet
+cat.style.backgroundPosition =
+`-${frameX * 64}px -${frameY * 64}px`;
+}
+
+setInterval(animate, 100);
+
 let menu = document.getElementById("menu");
 
 let catState = "idle";
